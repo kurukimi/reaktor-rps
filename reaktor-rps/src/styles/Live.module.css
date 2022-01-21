@@ -1,0 +1,36 @@
+
+.winner {
+    color: green;
+}
+
+.div {
+    margin-top: 10px;
+}
+.card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    
+    
+  }
+  
+  .card > span {
+    flex-basis: 20%;
+    text-align: center;
+  }
+  
+  .card > span:last-child {
+    text-align: end;
+  }
+  
+  .card > span:first-child {
+    text-align: start;
+  }
+
+  @media screen and (max-width: 600px) {
+    .card > span {
+      font-size: 0.75rem;
+    }
+  }
