@@ -2,7 +2,7 @@
 reaktor pre assignment
 
 # Reaktor pre-assignment
-my solution for the Reaktor pre-assignment 2022 for Summer Developers. This repository has frontend and backend for the app. 
+my solution for the Reaktor pre-assignment 2022 for Summer Developers. This repository has the react frontend and node express backend for the app. 
 There's also my heroku build at: https://github.com/kurukimi/rps-heroku
 
 And live build at: https://reaktor-rps2022.herokuapp.com/
