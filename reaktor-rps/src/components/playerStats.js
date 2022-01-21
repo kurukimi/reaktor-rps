@@ -28,6 +28,9 @@ const PlayerStats = ({games}) => {
     const handleChange = (event, value) => {
         setPage(value);
     };
+    if ((!games) || games.length === 0){
+        return(<h3>loading history...</h3>)
+    }
     return(
         <div>
             <Divider></Divider>

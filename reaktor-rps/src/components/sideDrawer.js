@@ -11,7 +11,7 @@ const PlayerDrawer = ({setP}) => {
 
   useEffect(() => {
     const fetchPlayers = async () => {
-      const response = await axios.get(`http://${window.location.hostname}:80/rps/players`)
+      const response = await axios.get(`http://${window.location.hostname}/rps/players`)
       const data = response.data
       setPlayers(data)
     }
@@ -19,7 +19,8 @@ const PlayerDrawer = ({setP}) => {
   }, [])
 
   const fetchData = async (name) => {
-    const response = await axios.get(`http://${window.location.hostname}:80/rps/history/${name}`)
+    setP([])
+    const response = await axios.get(`http://${window.location.hostname}/rps/history/${name}`)
     const data = response.data
     console.log(data)
     setP([data])

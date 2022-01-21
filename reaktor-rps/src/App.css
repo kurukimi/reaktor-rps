@@ -4,7 +4,7 @@
 
 .UpperCont {
   height: 400px;
-  overflow-block: hidden;
+  overflow-block: scroll;
 }
 
 .App-logo {

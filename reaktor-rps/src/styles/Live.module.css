@@ -5,6 +5,8 @@
 
 .div {
     margin-top: 10px;
+    height: 400px;
+    overflow-y: scroll;
 }
 .card {
     width: 100%;

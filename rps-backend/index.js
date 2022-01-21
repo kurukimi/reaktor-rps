@@ -3,7 +3,6 @@ const cors = require('cors')
 const gameApi = require('./controllers/historyapi')
 const {downloadDatabase} = require('./services/historyService')
 const config = require('./utils/config')
-//populator.downloadDatabase()
 let lock = false
 const syncJob = () => {
   if (!lock) {

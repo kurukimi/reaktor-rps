@@ -21,7 +21,7 @@ const darkTheme = createTheme({
 
 
 function App() {
-  const [player, setPlayer] = useState([])
+  const [player, setPlayer] = useState(null)
   return (
     
     <ThemeProvider theme={darkTheme}>
@@ -34,7 +34,7 @@ function App() {
           <Live/>
         </div>
         <div>
-          { player.length > 0 ? <PlayerStats games={player[0]}/> : <h3>Select player to show history</h3>}
+          { player ? <PlayerStats games={player[0]}/> : <h3>Select player to show history</h3>}
         </div>
       </div>
     </ThemeProvider>
