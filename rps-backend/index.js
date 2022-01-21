@@ -28,7 +28,9 @@ setInterval(syncJob, 1200000)
 const app = express()
 
 app.use(cors())
+app.use(express.static('build'))
 
 app.use('/rps', gameApi)
-app.listen(80)
+const port = config.PORT || 80
+app.listen(port)
 
