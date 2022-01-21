@@ -11,6 +11,8 @@ And live build at: https://reaktor-rps2022.herokuapp.com/
 
 Set env file DB variable equal to mongodb://127.0.0.1/my_database, or some other mongodb database.
 
+after setup app runs at `localhost:80`
+
 ## Other
 
 # Issues
