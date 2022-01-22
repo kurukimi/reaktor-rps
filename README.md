@@ -9,7 +9,8 @@ And live build at: https://reaktor-rps2022.herokuapp.com/
 
 ## Running locally
 
-Set env file DB variable equal to mongodb://127.0.0.1/my_database, or some other mongodb database.
+Set env file DB variable equal to mongodb://mongodb:27017/my_database, or some other mongodb database.
+run command: docker-compose up
 
 after setup app runs at `localhost:80`
 
