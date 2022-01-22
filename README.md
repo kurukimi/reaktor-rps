@@ -13,6 +13,3 @@ Set env file DB variable equal to mongodb://127.0.0.1/my_database, or some other
 
 after setup app runs at `localhost:80`
 
-## Other
-
-# Issues
