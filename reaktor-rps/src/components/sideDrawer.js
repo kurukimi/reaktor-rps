@@ -22,7 +22,6 @@ const PlayerDrawer = ({setP}) => {
     setP([])
     const response = await axios.get(`http://${window.location.hostname}/rps/history/${name}`)
     const data = response.data
-    console.log(data)
     setP([data])
   }
 
