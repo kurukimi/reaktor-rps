@@ -29,13 +29,13 @@ const PlayerStats = ({games}) => {
     const classes = useStyles()
     const handleChange = async (event,value) => {
         setPage(p => value)
-        await axios.get(`http://${window.location.hostname}/rps/history/${player.name}?page=${value}`)
-        .then(data => {
-            setPlayer(prevState => ({              
-            ...prevState,   
-            allGames: data.data      
-            }))
-  })
+        const data = await axios.get(`http://${window.location.hostname}/rps/history/${player.name}?page=${value}`)
+        .catch(e => console.log(e))
+        setPlayer(prevState => ({              
+        ...prevState,   
+        allGames: data.data      
+        }))
+  
     }
     
     return(

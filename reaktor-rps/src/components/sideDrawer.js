@@ -16,6 +16,7 @@ const PlayerDrawer = () => {
   useEffect(() => {
     const fetchPlayers = async () => {
       const response = await axios.get(`http://${window.location.hostname}/rps/players`)
+      .catch(e => console.log(e))
       const data = response.data
       setPlayers(p => data)
       
@@ -32,7 +33,7 @@ const PlayerDrawer = () => {
       setPage(p => 1)
       setPlayer({})
       const data = await axios.get(`http://${window.location.hostname}/rps/history/${p}`)
-
+      .catch(e => console.log(e))
       setPlayer({
         name: data.data.name,
         mostPlayedHand: data.data.mostPlayedHand,
@@ -43,7 +44,7 @@ const PlayerDrawer = () => {
     }
   
   const d = await axios.get(`http://${window.location.hostname}/rps/history/${p}?page=${page}`)
-  
+  .catch(e => console.log(e))
     setPlayer(prevState => ({              
     ...prevState,   
       allGames: d.data      
