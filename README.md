@@ -13,7 +13,7 @@ The heroku app uses mongodb atlas free tier, so queries may be slow.
 
 ## Running locally
 
-Set env file DB variable equal to mongodb://mongodb:27017/my_database, or some other mongodb database.
+Set env file; PORT variable and  DB variable equal to mongodb://mongodb:27017/my_database, or some other mongodb database.
 run command: docker-compose up
 
 after setup app runs at `localhost:80`
