@@ -18,14 +18,14 @@ if(mongoose.connection.readyState == 0) {
 }
 
 
-gameRouter.get('/history/:name', async (request, response) => {
+gameRouter.get('/history/:name', (request, response) => {
     let name = request.params.name
-    const history = await getPlayerHistory(name)
-    
-    response.json(history)
+    getPlayerHistory(name)
+        .then(data => response.json(data))
+        .catch(e => console.log(e))
 })
 
-gameRouter.get('/players', async (request, response) => {
+gameRouter.get('/players', (request, response) => {
     getAllPlayers()
         .then(data => response.json(data))
         .catch(e => console.log(e))
