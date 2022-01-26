@@ -35,6 +35,10 @@ const Live = () => {
 
   }, [])
 
+
+  if (live.length === 0){
+    return <h3>Waiting for live data...</h3>
+  }
   return (
     <React.Fragment>
     <div className={styles.div}>

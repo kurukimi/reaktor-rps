@@ -7,7 +7,6 @@ const axios = require("axios")
 
 
 const downloadDatabase = async () => {
-    
     const historyUrl = 'https://bad-api-assignment.reaktor.com'
     let cursor = '/rps/history'
     let counter = 0
@@ -21,10 +20,9 @@ const downloadDatabase = async () => {
             cursor = null
             break
         }
-        
         cursor = response.data.cursor
-        
         const res = await savePage(response)
+
         if (res === false) {
             console.log('Aborting')
             cursor = null
@@ -96,23 +94,37 @@ const getMostPlayedHand = async (name) => {
 
 
 const getPlayerHistory = async (name) => {
+    try {
     const numOfGames = await GameModel
     .countDocuments({$or:[{"playerA.name": name}, {"playerB.name": name}]})
     const wins = await GameModel.countDocuments({'winner': name})
     const winPercent = (wins/numOfGames*100).toFixed(2)
-    const allGames = await GameModel
-    .find({$or:[{"playerA.name": name}, {"playerB.name": name}]})
     const mostPlayedHand = await getMostPlayedHand(name)
-    
-
     return {
         name: name,
         mostPlayedHand: mostPlayedHand,
         winPercent: winPercent,
         numOfGames: numOfGames,
-        allGames: allGames
     }
+    } catch (e) {
+        console.log(e)
+    } 
 
+}
+
+const getPlayerGames = async(name, page) => {
+    try {
+    const allGames = await GameModel
+    .find(
+        {$or:[{"playerA.name": name}, {"playerB.name": name}]},
+        {},
+        { sort: { t: -1 }, skip: (page-1)*30, limit: 30 }
+        )
+    return allGames
+    } catch (e) {
+        console.log(e)
+    }
+    
 }
 
 
@@ -171,5 +183,6 @@ const cursorIsSaved = async (pagecursor) => {
 module.exports = {
     downloadDatabase: downloadDatabase,
     getAllPlayers: getAllPlayers,
-    getPlayerHistory: getPlayerHistory
+    getPlayerHistory: getPlayerHistory,
+    getPlayerGames: getPlayerGames
 }

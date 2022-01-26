@@ -1,4 +1,4 @@
-import React, {  useState} from "react"
+import React, {  useState , createContext} from "react"
 import './App.css'
 import DenseAppBar from "./components/appBar";
 import Live from "./components/live";
@@ -20,25 +20,31 @@ const darkTheme = createTheme({
 })
 
 
+export const MenuContext = createContext()
+export const PageContext = createContext()
+
 function App() {
   const [player, setPlayer] = useState(null)
+  const [page, setPage] = useState(1)
   return (
-    
+    <PageContext.Provider value={{page, setPage}}>
+    <MenuContext.Provider value={{player, setPlayer}}>
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div className="App">
       <DenseAppBar
-        setP={setPlayer}
+  
       />
         <div className="UpperCont">
           <Live/>
         </div>
         <div>
-          { player ? <PlayerStats games={player[0]}/> : <h3>Select player to show history</h3>}
+          { player ? <PlayerStats games={player}/> : <h3>Select player to show history</h3>}
         </div>
       </div>
     </ThemeProvider>
-    
+    </MenuContext.Provider>
+    </PageContext.Provider>
   );
 }
 
