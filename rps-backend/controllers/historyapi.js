@@ -33,7 +33,7 @@ gameRouter.get('/history/:name', (request, response) => {
     
 })
 
-gameRouter.get('/players', async (request, response) => {
+gameRouter.get('/players', (request, response) => {
     getAllPlayers()
         .then(data => response.json(data))
         .catch(e => console.log(e))
