@@ -6,7 +6,7 @@ import { MenuContext ,PageContext} from '../App'
 
 const PlayerDrawer = () => {
     
-    const {page, setPage} = useContext(PageContext)
+    const {setPage} = useContext(PageContext)
     const {setPlayer, player} = useContext(MenuContext)
     const anchor = 'left'
     const [open, setOpen] = useState(false)
@@ -31,10 +31,10 @@ const PlayerDrawer = () => {
       return
     }
 
-    setPage(p => 1)
+    setPage(1)
     setPlayer({})
 
-    const d = await axios.get(`http://${window.location.hostname}/rps/history/${p}?page=${page}`)
+    const d = await axios.get(`http://${window.location.hostname}/rps/history/${p}?page=${1}`)
     .catch(e => console.log(e))
     setPlayer(prevState => ({              
     ...prevState,   
