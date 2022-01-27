@@ -101,7 +101,6 @@ const getPlayerHistory = async (name) => {
     const winPercent = (wins/numOfGames*100).toFixed(2)
     const mostPlayedHand = await getMostPlayedHand(name)
     return {
-        name: name,
         mostPlayedHand: mostPlayedHand,
         winPercent: winPercent,
         numOfGames: numOfGames,

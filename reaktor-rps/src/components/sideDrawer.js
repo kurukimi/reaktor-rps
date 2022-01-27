@@ -27,30 +27,35 @@ const PlayerDrawer = () => {
   
   
   const fetchData = async (p) => {
-    
-    // if player changed
-    if (p !== player) {
-      setPage(p => 1)
-      setPlayer({})
-      const data = await axios.get(`http://${window.location.hostname}/rps/history/${p}`)
-      .catch(e => console.log(e))
-      setPlayer({
-        name: data.data.name,
-        mostPlayedHand: data.data.mostPlayedHand,
-        winPercent: data.data.winPercent,
-        numOfGames: data.data.numOfGames,
-        allGames: null
-      })
+    if (player && p === player.name) {
+      return
     }
-  
-  const d = await axios.get(`http://${window.location.hostname}/rps/history/${p}?page=${page}`)
-  .catch(e => console.log(e))
+
+    setPage(p => 1)
+    setPlayer({})
+
+    const d = await axios.get(`http://${window.location.hostname}/rps/history/${p}?page=${page}`)
+    .catch(e => console.log(e))
     setPlayer(prevState => ({              
     ...prevState,   
-      allGames: d.data      
+      allGames: d.data,
+      name: p,
     }))
-  
+
+   
+    const data = await axios.get(`http://${window.location.hostname}/rps/history/${p}`)
+    .catch(e => console.log(e))
+    setPlayer(prev => ({
+      ...prev,
+      
+      mostPlayedHand: data.data.mostPlayedHand,
+      winPercent: data.data.winPercent,
+      numOfGames: data.data.numOfGames,
+      
+    }))
   }
+  
+  
 
 
 
